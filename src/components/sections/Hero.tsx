@@ -4,11 +4,12 @@ import { Button } from '../ui/Button'
 export function Hero() {
   return (
     <section className="min-h-screen flex items-center pt-20 relative overflow-hidden">
-      {/* Background Glow */}
+      {/* Background Glow Effect */}
       <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-emerald-600/20 rounded-full blur-[120px] pointer-events-none opacity-50 mix-blend-screen" />
 
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
+        {/* Left Content */}
         <div className="space-y-8 z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/30 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
             <span className="relative flex h-2 w-2">
@@ -32,12 +33,12 @@ export function Hero() {
               See My Work <ArrowRight size={20} className="ml-2" />
             </Button>
             
-            {/* Fixed: removed asChild */}
             <Button variant="outline" size="lg" className="gap-2 cursor-pointer">
                <Github size={20} /> View GitHub
             </Button>
           </div>
 
+          {/* Socials */}
           <div className="pt-8 border-t border-white/10 flex gap-6 items-center text-slate-500">
              <Globe size={18} className="hover:text-emerald-400 cursor-pointer transition-colors"/>
              <Github size={18} className="hover:text-white cursor-pointer transition-colors"/>
@@ -46,6 +47,7 @@ export function Hero() {
           </div>
         </div>
 
+        {/* Right Visual */}
         <div className="relative hidden lg:block h-[500px] rounded-2xl bg-zinc-900/50 border border-white/5 overflow-hidden">
            <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-3/4 space-y-4">
