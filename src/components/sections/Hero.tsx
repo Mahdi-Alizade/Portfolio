@@ -36,14 +36,13 @@ export function Hero() {
               See My Work <ArrowRight size={20} className="ml-2" />
             </Button>
             
-            <Button variant="outline" size="lg" asChild className="gap-2 cursor-pointer">
-              <a href="https://github.com/Mahdi-Alizade" target="_blank" rel="noreferrer">
-                 <Github size={20} /> View GitHub
-              </a>
+            {/* اصلاح: حذف asChild و تغییر نام آیکون‌ها */}
+            <Button variant="outline" size="lg" className="gap-2 cursor-pointer">
+               <Github size={20} /> View GitHub
             </Button>
           </div>
 
-          {/* Socials - Corrected Icons */}
+          {/* Socials - استفاده از LinkedIn با حرف بزرگ L و کوچک n */}
           <div className="pt-8 border-t border-white/10 flex gap-6 items-center text-slate-500">
              <Globe size={18} className="hover:text-emerald-400 cursor-pointer transition-colors"/>
              <Github size={18} className="hover:text-white cursor-pointer transition-colors"/>

@@ -1,12 +1,10 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react'
-import { motion, Variants } from 'framer-motion'
 import { clsx } from 'clsx'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
   variant?: 'primary' | 'outline' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
-  loading?: boolean
 }
 
 export function Button({ 
@@ -17,7 +15,7 @@ export function Button({
   ...props 
 }: ButtonProps) {
   
-  const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]"
+  const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-all focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]"
   
   const variants = {
     primary: "bg-emerald-600 text-white hover:bg-emerald-700 shadow-[0_0_15px_rgba(5,150,105,0.4)]",
@@ -32,13 +30,12 @@ export function Button({
   }
 
   return (
-    <motion.button
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.96 }}
+    <button
+      // استفاده از کلاس‌های Tailwind به جای motion برای رفع مشکل Drag
       className={clsx(baseStyles, variants[variant], sizes[size], className)}
       {...props}
     >
       {children}
-    </motion.button>
+    </button>
   )
 }
