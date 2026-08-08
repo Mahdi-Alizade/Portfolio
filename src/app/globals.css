@@ -9,19 +9,15 @@
   }
 
   .dark {
-    --background: #0a0a0a; /* رنگ پس زمینه اصلی */
+    --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
 
-@layer body {
   body {
-    @apply bg-background text-foreground antialiased selection:bg-emerald-500/30;
-    font-family: Arial, Helvetica, sans-serif;
+    @apply bg-background text-foreground antialiased;
   }
 }
 
-/* اسکرول بار سفارشی برای مرورگر */
 ::-webkit-scrollbar {
   width: 8px;
 }

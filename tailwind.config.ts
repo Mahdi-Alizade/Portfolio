@@ -10,22 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        // اگه خواستی رنگ خاص اضافه کنی از اینجا بردار
-        accent: '#0f766e', // سبز کله‌غازی تیره
-      },
-      fontFamily: {
-        sans: ['var(--font-inter)'], // فونت اینتر رو توی layout تعریف میکنیم
-      },
-      animation: {
-        'fade-in': 'fadeIn 0.5s ease-out forwards',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(10px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
       },
     },
   },
