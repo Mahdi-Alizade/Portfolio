@@ -2,6 +2,7 @@ import { Header } from '@/components/navigation/Header'
 import { Hero } from '@/components/sections/Hero'
 import { About } from '@/components/sections/About'
 import { Projects } from '@/components/sections/Projects'
+import { Contact } from '@/components/sections/Contact'
 
 export default function Home() {
   return (
@@ -10,16 +11,15 @@ export default function Home() {
       {/* Navigation */}
       <Header />
       
-      {/* Sections */}
+      {/* Sections Order */}
       <Hero />
       <About />
       <Projects />
+      <Contact />
 
-      {/* Footer Area */}
-      <footer className="py-12 border-t border-white/10 bg-zinc-950/50 text-center">
-        <p className="text-slate-500 text-sm">
-          © {new Date().getFullYear()} Mahdi Alizade. All rights reserved.
-        </p>
+      {/* Footer */}
+      <footer className="py-8 border-t border-white/10 bg-black text-center text-slate-600 text-sm">
+        <p>© {new Date().getFullYear()} Mahdi Alizade. Built with Next.js</p>
       </footer>
 
     </main>
