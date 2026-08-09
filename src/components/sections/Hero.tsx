@@ -46,12 +46,15 @@ function LinkedInIcon({ size = 20, className = '' }: { size?: number; className?
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex items-center pt-20 relative overflow-hidden">
-      <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-emerald-600/20 rounded-full blur-[120px] pointer-events-none opacity-50 mix-blend-screen" />
+    <section className="min-h-[calc(100vh-4rem)] flex items-center pt-24 pb-10 relative overflow-hidden">
+      {/* Background Glow Effect - Hidden on tiny screens to save space */}
+      <div className="absolute top-10 right-0 w-[300px] h-[300px] bg-emerald-600/20 rounded-full blur-[100px] pointer-events-none opacity-40 mix-blend-screen hidden sm:block" />
 
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className="space-y-8 z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/30 border border-emerald-500/20 text-emerald-400 text-xs font-medium uppercase tracking-wide">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+        
+        {/* Left Content */}
+        <div className="space-y-6 z-10 order-1">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/30 border border-emerald-500/20 text-emerald-400 text-[10px] font-medium uppercase tracking-wide">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -59,28 +62,27 @@ export function Hero() {
             Available for global projects
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight text-white">
-            I build AI solutions <br />
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-white">
+            I build AI solutions <br className="hidden sm:block" />
             that solve{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
               real problems.
             </span>
           </h1>
 
-          <p className="text-lg text-slate-400 max-w-xl leading-relaxed">
-            Hi, I&apos;m <strong className="text-white">Mahdi Alizade</strong>. I architect
-            intelligent systems for the modern world. Currently building{' '}
+          <p className="text-base sm:text-lg text-slate-400 max-w-lg leading-relaxed">
+            Hi, I&apos;m <strong className="text-white">Mahdi Alizade</strong>. I architect intelligent systems for the modern world. Currently building{' '}
             <strong>Nova AI</strong> for beauty clinics.
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-3 pt-2">
             <Button
-              size="lg"
+              size="md"
               onClick={() =>
                 document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
               }
             >
-              See My Work <ArrowRight size={20} className="ml-2" />
+              See My Work <ArrowRight size={18} className="ml-2" />
             </Button>
 
             <a
@@ -88,42 +90,34 @@ export function Hero() {
               target="_blank"
               rel="noreferrer"
             >
-              <Button variant="outline" size="lg" className="gap-2 cursor-pointer">
-                <GitHubIcon size={20} /> View GitHub
+              <Button variant="outline" size="md" className="gap-2 cursor-pointer w-full sm:w-auto justify-center">
+                <GitHubIcon size={18} /> View GitHub
               </Button>
             </a>
           </div>
 
-          <div className="pt-8 border-t border-white/10 flex gap-6 items-center text-slate-500">
-            <Globe size={18} className="hover:text-emerald-400 cursor-pointer transition-colors" />
-            <a
-              href="https://github.com/Mahdi-Alizade"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              <GitHubIcon size={18} />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-blue-400 transition-colors"
-            >
-              <LinkedInIcon size={18} />
-            </a>
-            <span className="text-sm ml-4">English • Persian</span>
+          {/* Socials */}
+          <div className="pt-6 border-t border-white/10 flex gap-5 items-center text-slate-500 text-sm">
+             <Globe size={16} className="hover:text-emerald-400 cursor-pointer transition-colors"/>
+             <a href="https://github.com/Mahdi-Alizade" target="_blank" rel="noreferrer" className="hover:text-white transition-colors"><GitHubIcon size={16} /></a>
+             <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors"><LinkedInIcon size={16} /></a>
+             <span className="text-xs ml-2 opacity-60">English • Persian</span>
           </div>
         </div>
 
-        <div className="relative hidden lg:block h-[500px] rounded-2xl bg-zinc-900/50 border border-white/5 overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-3/4 space-y-4">
-              <div className="h-32 w-full bg-white/5 rounded-lg border border-white/5 animate-pulse" />
-              <div className="h-4 w-3/4 bg-white/5 rounded" />
-              <div className="h-4 w-1/2 bg-white/5 rounded" />
-            </div>
-          </div>
+        {/* Right Visual */}
+        <div className="order-2 relative w-full h-[250px] sm:h-[350px] rounded-2xl bg-zinc-900/50 border border-white/5 overflow-hidden shrink-0">
+           <div className="absolute inset-0 flex items-center justify-center p-6">
+              <div className="w-full space-y-3">
+                 <div className="h-24 sm:h-32 w-full bg-white/5 rounded-lg border border-white/5 animate-pulse" />
+                 <div className="h-3 w-3/4 bg-white/5 rounded" />
+                 <div className="h-3 w-1/2 bg-white/5 rounded" />
+                 <div className="flex gap-3 mt-4">
+                    <div className="h-16 sm:h-20 flex-1 bg-emerald-500/10 rounded-lg border border-emerald-500/20" />
+                    <div className="h-16 sm:h-20 flex-1 bg-white/5 rounded-lg border border-white/5" />
+                 </div>
+              </div>
+           </div>
         </div>
       </div>
     </section>
