@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image'
 import { ArrowRight, Globe } from 'lucide-react'
 import { Button } from '../ui/Button'
 
@@ -47,12 +48,9 @@ function LinkedInIcon({ size = 20, className = '' }: { size?: number; className?
 export function Hero() {
   return (
     <section className="min-h-[calc(100vh-4rem)] flex items-center pt-24 pb-10 relative overflow-hidden">
-      {/* Background Glow Effect - Hidden on tiny screens to save space */}
       <div className="absolute top-10 right-0 w-[300px] h-[300px] bg-emerald-600/20 rounded-full blur-[100px] pointer-events-none opacity-40 mix-blend-screen hidden sm:block" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
-        
-        {/* Left Content */}
         <div className="space-y-6 z-10 order-1">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/30 border border-emerald-500/20 text-emerald-400 text-[10px] font-medium uppercase tracking-wide">
             <span className="relative flex h-2 w-2">
@@ -71,7 +69,8 @@ export function Hero() {
           </h1>
 
           <p className="text-base sm:text-lg text-slate-400 max-w-lg leading-relaxed">
-            Hi, I&apos;m <strong className="text-white">Mahdi Alizade</strong>. I architect intelligent systems for the modern world. Currently building{' '}
+            Hi, I&apos;m <strong className="text-white">Mahdi Alizade</strong>. I architect
+            intelligent systems for the modern world. Currently building{' '}
             <strong>Nova AI</strong> for beauty clinics.
           </p>
 
@@ -85,39 +84,48 @@ export function Hero() {
               See My Work <ArrowRight size={18} className="ml-2" />
             </Button>
 
-            <a
-              href="https://github.com/Mahdi-Alizade"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://github.com/Mahdi-Alizade" target="_blank" rel="noreferrer">
               <Button variant="outline" size="md" className="gap-2 cursor-pointer w-full sm:w-auto justify-center">
                 <GitHubIcon size={18} /> View GitHub
               </Button>
             </a>
           </div>
 
-          {/* Socials */}
           <div className="pt-6 border-t border-white/10 flex gap-5 items-center text-slate-500 text-sm">
-             <Globe size={16} className="hover:text-emerald-400 cursor-pointer transition-colors"/>
-             <a href="https://github.com/Mahdi-Alizade" target="_blank" rel="noreferrer" className="hover:text-white transition-colors"><GitHubIcon size={16} /></a>
-             <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors"><LinkedInIcon size={16} /></a>
-             <span className="text-xs ml-2 opacity-60">English • Persian</span>
+            <Globe size={16} className="hover:text-emerald-400 cursor-pointer transition-colors" />
+            <a
+              href="https://github.com/Mahdi-Alizade"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              <GitHubIcon size={16} />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-blue-400 transition-colors"
+            >
+              <LinkedInIcon size={16} />
+            </a>
+            <span className="text-xs ml-2 opacity-60">English • Persian</span>
           </div>
         </div>
 
-        {/* Right Visual */}
-        <div className="order-2 relative w-full h-[250px] sm:h-[350px] rounded-2xl bg-zinc-900/50 border border-white/5 overflow-hidden shrink-0">
-           <div className="absolute inset-0 flex items-center justify-center p-6">
-              <div className="w-full space-y-3">
-                 <div className="h-24 sm:h-32 w-full bg-white/5 rounded-lg border border-white/5 animate-pulse" />
-                 <div className="h-3 w-3/4 bg-white/5 rounded" />
-                 <div className="h-3 w-1/2 bg-white/5 rounded" />
-                 <div className="flex gap-3 mt-4">
-                    <div className="h-16 sm:h-20 flex-1 bg-emerald-500/10 rounded-lg border border-emerald-500/20" />
-                    <div className="h-16 sm:h-20 flex-1 bg-white/5 rounded-lg border border-white/5" />
-                 </div>
-              </div>
-           </div>
+        {/* Nova AI product mockup */}
+        <div className="order-2 relative w-full">
+          <div className="absolute -inset-3 bg-emerald-500/20 rounded-2xl blur-2xl opacity-60 pointer-events-none" />
+          <div className="relative rounded-2xl border border-white/10 bg-zinc-900/40 overflow-hidden shadow-2xl shadow-emerald-950/40">
+            <Image
+              src="/nova-demo.png"
+              alt="Nova AI — AI operating system for beauty clinics"
+              width={1200}
+              height={800}
+              priority
+              className="w-full h-auto object-cover object-top"
+            />
+          </div>
         </div>
       </div>
     </section>

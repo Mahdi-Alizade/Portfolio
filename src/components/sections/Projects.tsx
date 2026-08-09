@@ -1,15 +1,6 @@
+import Image from 'next/image'
 import { Button } from '../ui/Button'
-import { ArrowUpRight, Calendar } from 'lucide-react'
-
-const projects = [
-  {
-    title: 'Nova AI',
-    desc: 'An intelligent booking system for beauty clinics. Uses NLP to understand requests and manages the schedule efficiently.',
-    tags: ['NestJS', 'Next.js', 'AI Integration'],
-    icon: <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-500" />,
-    status: 'MVP Ready',
-  },
-]
+import { ArrowUpRight } from 'lucide-react'
 
 export function Projects() {
   return (
@@ -26,29 +17,34 @@ export function Projects() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 max-w-2xl mx-auto gap-4 sm:gap-6">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group relative p-5 sm:p-8 rounded-2xl bg-zinc-900/40 border border-white/5 hover:border-emerald-500/30 transition-colors duration-300"
-            >
-              <div className="flex justify-between items-start mb-4 sm:mb-6">
-                <div className="p-2.5 sm:p-3 bg-zinc-800/50 rounded-lg">{project.icon}</div>
-                <span className="text-[10px] sm:text-xs px-2 py-1 rounded-full border border-emerald-500/30 text-emerald-400 bg-emerald-500/10">
-                  {project.status}
+        <div className="max-w-3xl mx-auto">
+          <div className="group relative rounded-2xl bg-zinc-900/40 border border-white/5 hover:border-emerald-500/30 transition-colors duration-300 overflow-hidden">
+            <div className="relative w-full aspect-[16/10] border-b border-white/5 bg-zinc-950">
+              <Image
+                src="/nova-demo.png"
+                alt="Nova AI product preview"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 768px"
+              />
+            </div>
+
+            <div className="p-5 sm:p-8">
+              <div className="flex justify-between items-start mb-4 gap-4">
+                <h3 className="text-xl sm:text-2xl font-bold text-white">Nova AI</h3>
+                <span className="text-[10px] sm:text-xs px-2 py-1 rounded-full border border-emerald-500/30 text-emerald-400 bg-emerald-500/10 shrink-0">
+                  MVP Ready
                 </span>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">
-                {project.title}
-              </h3>
-              <p className="text-slate-400 mb-4 sm:mb-6 text-sm sm:text-base">
-                {project.desc}
+              <p className="text-slate-400 mb-6 text-sm sm:text-base">
+                AI operating system for beauty clinics. Turns WhatsApp &amp; Instagram
+                messages into booked, paid appointments — automatically.
               </p>
 
-              <div className="flex items-center justify-between mt-auto gap-4">
+              <div className="flex items-center justify-between gap-4 flex-wrap">
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                  {['NestJS', 'Next.js', 'AI Integration'].map((tag) => (
                     <span
                       key={tag}
                       className="text-[10px] sm:text-xs text-slate-500 border border-slate-800 px-2 py-1 rounded whitespace-nowrap"
@@ -67,7 +63,7 @@ export function Projects() {
                 </Button>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
