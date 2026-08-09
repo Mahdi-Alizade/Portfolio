@@ -116,15 +116,31 @@ export function Hero() {
           </div>
         </div>
 
+        {/* Product shot — fixed height so it never collapses */}
         <div className="order-2 relative w-full">
-          <div className="absolute -inset-3 bg-emerald-500/20 rounded-2xl blur-2xl opacity-60 pointer-events-none" />
-          <div className="relative rounded-2xl border border-white/10 bg-zinc-900/40 overflow-hidden shadow-2xl shadow-emerald-950/40">
+          <div className="absolute -inset-2 sm:-inset-3 bg-emerald-500/15 rounded-2xl blur-2xl pointer-events-none" />
+          <div className="relative rounded-xl sm:rounded-2xl border border-white/10 bg-zinc-950 overflow-hidden shadow-2xl shadow-black/50">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/nova-demo.png"
-              alt="Nova AI — AI operating system for beauty clinics"
-              className="w-full h-auto object-cover object-top block"
+              alt="Nova AI dashboard for beauty clinics"
+              width={1200}
+              height={750}
+              className="w-full h-auto min-h-[220px] sm:min-h-[320px] object-cover object-top block"
+              onError={(e) => {
+                const el = e.currentTarget
+                el.style.display = 'none'
+                const fallback = el.nextElementSibling as HTMLElement | null
+                if (fallback) fallback.style.display = 'flex'
+              }}
             />
+            <div
+              className="hidden min-h-[220px] sm:min-h-[320px] items-center justify-center p-6 text-center text-slate-400 text-sm"
+              style={{ display: 'none' }}
+            >
+              Image missing: put <code className="text-emerald-400">nova-demo.png</code> in{' '}
+              <code className="text-emerald-400">/public</code>
+            </div>
           </div>
         </div>
       </div>
