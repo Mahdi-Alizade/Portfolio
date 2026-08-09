@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Button } from '../ui/Button'
 import { ArrowUpRight } from 'lucide-react'
 
@@ -19,13 +18,12 @@ export function Projects() {
 
         <div className="max-w-3xl mx-auto">
           <div className="group relative rounded-2xl bg-zinc-900/40 border border-white/5 hover:border-emerald-500/30 transition-colors duration-300 overflow-hidden">
-            <div className="relative w-full aspect-[16/10] border-b border-white/5 bg-zinc-950">
-              <Image
+            <div className="relative w-full border-b border-white/5 bg-zinc-950">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/nova-demo.png"
                 alt="Nova AI product preview"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 768px"
+                className="w-full h-auto object-cover object-top block"
               />
             </div>
 

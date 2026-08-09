@@ -1,6 +1,5 @@
 "use client";
 
-import Image from 'next/image'
 import { ArrowRight, Globe } from 'lucide-react'
 import { Button } from '../ui/Button'
 
@@ -85,7 +84,11 @@ export function Hero() {
             </Button>
 
             <a href="https://github.com/Mahdi-Alizade" target="_blank" rel="noreferrer">
-              <Button variant="outline" size="md" className="gap-2 cursor-pointer w-full sm:w-auto justify-center">
+              <Button
+                variant="outline"
+                size="md"
+                className="gap-2 cursor-pointer w-full sm:w-auto justify-center"
+              >
                 <GitHubIcon size={18} /> View GitHub
               </Button>
             </a>
@@ -113,17 +116,14 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Nova AI product mockup */}
         <div className="order-2 relative w-full">
           <div className="absolute -inset-3 bg-emerald-500/20 rounded-2xl blur-2xl opacity-60 pointer-events-none" />
           <div className="relative rounded-2xl border border-white/10 bg-zinc-900/40 overflow-hidden shadow-2xl shadow-emerald-950/40">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/nova-demo.png"
               alt="Nova AI — AI operating system for beauty clinics"
-              width={1200}
-              height={800}
-              priority
-              className="w-full h-auto object-cover object-top"
+              className="w-full h-auto object-cover object-top block"
             />
           </div>
         </div>
