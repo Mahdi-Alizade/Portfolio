@@ -1,66 +1,118 @@
-import { Button } from '../ui/Button'
-import { ArrowUpRight } from 'lucide-react'
+import React from 'react'
+import { projectsList, ProjectItem } from '../../lib/site'
+import { ExternalLink, Terminal, Cpu, Layers } from 'lucide-react'
 
 export function Projects() {
-  return (
-    <section id="projects" className="py-16 sm:py-24 relative overflow-hidden">
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-600/10 rounded-full blur-[100px] pointer-events-none opacity-50 sm:opacity-100" />
+  const systemsProjects = projectsList.filter(function (item) {
+    return item.category === 'Systems & Core'
+  })
 
+  const fullStackProjects = projectsList.filter(function (item) {
+    return item.category !== 'Systems & Core'
+  })
+
+  function renderProjectCard(project: ProjectItem) {
+    return (
+      <div
+        key={project.id}
+        className="flex flex-col justify-between p-6 rounded-xl bg-zinc-950 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200"
+      >
+        <div>
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <span className="text-xs font-mono uppercase tracking-wider text-emerald-400 bg-emerald-950/40 border border-emerald-800/40 px-2.5 py-0.5 rounded">
+              {project.status}
+            </span>
+            {project.githubUrl ? (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-zinc-500 hover:text-zinc-200 transition-colors p-1"
+                aria-label={`Source code for ${project.title}`}
+              >
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            ) : null}
+          </div>
+
+          <h4 className="text-lg font-semibold text-zinc-100 mb-1">
+            {project.title}
+          </h4>
+
+          <p className="text-xs font-mono text-zinc-400 mb-3">
+            {project.summary}
+          </p>
+
+          <p className="text-sm text-zinc-400 leading-relaxed mb-4">
+            {project.description}
+          </p>
+
+          {project.metrics ? (
+            <div className="mb-4 text-xs font-mono text-zinc-300 bg-zinc-900/90 border border-zinc-800 px-3 py-2 rounded">
+              <span className="text-zinc-500 mr-1.5">&gt;</span>
+              {project.metrics}
+            </div>
+          ) : null}
+        </div>
+
+        <div className="pt-4 border-t border-zinc-900 flex flex-wrap gap-1.5">
+          {project.stack.map(function (tech) {
+            return (
+              <span
+                key={tech}
+                className="text-xs text-zinc-400 bg-zinc-900 border border-zinc-800 px-2 py-0.5 rounded"
+              >
+                {tech}
+              </span>
+            )
+          })}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <section id="projects" className="py-20 border-t border-zinc-900 bg-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="mb-10 sm:mb-12 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
-            Featured Projects
+        <div className="mb-12">
+          <div className="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 mb-2">
+            <Terminal className="w-3.5 h-3.5" />
+            <span>ENGINEERING &amp; ARCHITECTURE</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-3">
+            Featured Systems &amp; Products
           </h2>
-          <p className="text-slate-400 max-w-xl mx-auto text-sm sm:text-base px-4">
-            Building tools that matter. Here is what I&apos;m focused on right now.
+          <p className="text-sm sm:text-base text-zinc-400 max-w-2xl">
+            Selected engineering implementations covering deep system internals,
+            custom virtual machines, database storage engines, and full-stack platforms.
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="group relative rounded-2xl bg-zinc-900/40 border border-white/5 hover:border-emerald-500/30 transition-colors duration-300 overflow-hidden">
-            <div className="relative w-full border-b border-white/5 bg-zinc-950">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/nova-demo.png"
-                alt="Nova AI product preview"
-                className="w-full h-auto object-cover object-top block"
-              />
-            </div>
+        {/* Systems & Low-Level Section */}
+        <div className="mb-14">
+          <div className="flex items-center gap-2 mb-6">
+            <Cpu className="w-4 h-4 text-zinc-400" />
+            <h3 className="text-lg font-semibold text-zinc-200">
+              Low-Level Systems &amp; Runtimes
+            </h3>
+          </div>
 
-            <div className="p-5 sm:p-8">
-              <div className="flex justify-between items-start mb-4 gap-4">
-                <h3 className="text-xl sm:text-2xl font-bold text-white">Nova AI</h3>
-                <span className="text-[10px] sm:text-xs px-2 py-1 rounded-full border border-emerald-500/30 text-emerald-400 bg-emerald-500/10 shrink-0">
-                  MVP Ready
-                </span>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {systemsProjects.map(renderProjectCard)}
+          </div>
+        </div>
 
-              <p className="text-slate-400 mb-6 text-sm sm:text-base">
-                AI operating system for beauty clinics. Turns WhatsApp &amp; Instagram
-                messages into booked, paid appointments — automatically.
-              </p>
+        {/* Applications & Distributed Architecture Section */}
+        <div>
+          <div className="flex items-center gap-2 mb-6">
+            <Layers className="w-4 h-4 text-zinc-400" />
+            <h3 className="text-lg font-semibold text-zinc-200">
+              Platform Architecture &amp; Production Services
+            </h3>
+          </div>
 
-              <div className="flex items-center justify-between gap-4 flex-wrap">
-                <div className="flex flex-wrap gap-2">
-                  {['NestJS', 'Next.js', 'AI Integration'].map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[10px] sm:text-xs text-slate-500 border border-slate-800 px-2 py-1 rounded whitespace-nowrap"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-emerald-500 hover:text-emerald-400 p-0 hover:bg-transparent gap-1 text-xs sm:text-sm shrink-0"
-                >
-                  See Project <ArrowUpRight size={14} className="sm:w-4 sm:h-4" />
-                </Button>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {fullStackProjects.map(renderProjectCard)}
           </div>
         </div>
       </div>
