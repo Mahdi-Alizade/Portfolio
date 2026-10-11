@@ -1,6 +1,6 @@
 import React from 'react'
 import { projectsList, ProjectItem } from '../../lib/site'
-import { ExternalLink, Terminal, Cpu, Layers } from 'lucide-react'
+import { ExternalLink, Terminal, Cpu, Layers, Lock } from 'lucide-react'
 
 export function Projects() {
   const systemsProjects = projectsList.filter(function (item) {
@@ -15,20 +15,26 @@ export function Projects() {
     return (
       <div
         key={project.id}
-        className="flex flex-col justify-between p-6 rounded-xl bg-zinc-950 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200"
+        className="flex flex-col justify-between p-6 rounded-xl bg-zinc-950/50 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 backdrop-blur-sm"
       >
         <div>
           <div className="flex items-center justify-between gap-3 mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-emerald-400 bg-emerald-950/40 border border-emerald-800/40 px-2.5 py-0.5 rounded">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-electric-400 bg-electric-950/40 border border-electric-800/40 px-2 py-0.5 rounded">
               {project.status}
             </span>
-            {project.githubUrl ? (
+            
+            {project.isPrivate ? (
+              <div className="flex items-center gap-1.5 text-zinc-500 bg-zinc-900 border border-zinc-800 px-2 py-1 rounded text-[10px] font-mono">
+                <Lock className="w-3 h-3" />
+                <span>Private</span>
+              </div>
+            ) : project.githubUrl ? (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="text-zinc-500 hover:text-zinc-200 transition-colors p-1"
-                aria-label={`Source code for ${project.title}`}
+                aria-label={"Source code for " + project.title}
               >
                 <ExternalLink className="w-4 h-4" />
               </a>
@@ -60,7 +66,7 @@ export function Projects() {
             return (
               <span
                 key={tech}
-                className="text-xs text-zinc-400 bg-zinc-900 border border-zinc-800 px-2 py-0.5 rounded"
+                className="text-[10px] font-mono text-zinc-400 bg-zinc-900 border border-zinc-800 px-2 py-0.5 rounded"
               >
                 {tech}
               </span>
@@ -75,7 +81,7 @@ export function Projects() {
     <section id="projects" className="py-20 border-t border-zinc-900 bg-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="mb-12">
-          <div className="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 mb-2">
+          <div className="inline-flex items-center gap-2 text-xs font-mono text-electric-400 mb-2">
             <Terminal className="w-3.5 h-3.5" />
             <span>ENGINEERING &amp; ARCHITECTURE</span>
           </div>
