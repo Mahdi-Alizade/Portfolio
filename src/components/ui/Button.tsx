@@ -1,40 +1,48 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react'
-import { clsx } from 'clsx'
+import React, { ButtonHTMLAttributes } from 'react'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode
-  variant?: 'primary' | 'outline' | 'ghost'
+  variant?: 'default' | 'outline' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
 }
 
-export function Button({ 
-  children, 
-  className, 
-  variant = 'primary', 
-  size = 'md', 
-  ...props 
-}: ButtonProps) {
+export function Button(props: ButtonProps) {
+  // مقادیر پیش‌فرض رو استخراج می‌کنیم
+  const variant = props.variant || 'default'
+  const size = props.size || 'md'
+  const className = props.className || ''
   
-  const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-all focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]"
-  
-  const variants = {
-    primary: "bg-emerald-600 text-white hover:bg-emerald-700 shadow-[0_0_15px_rgba(5,150,105,0.4)]",
-    outline: "border border-white/20 text-white hover:bg-white/10",
-    ghost: "text-slate-400 hover:text-white hover:bg-white/5"
-  }
-  
-  const sizes = {
-    sm: "h-9 px-4 text-sm",
-    md: "h-11 px-6 text-base",
-    lg: "h-14 px-8 text-lg"
+  // جدا کردن بقیه پراپ‌ها برای پاس دادن به دکمه اصلی
+  const { variant: _v, size: _s, className: _c, children, ...restProps } = props
+
+  // کلاس‌های پایه که همه دکمه‌ها دارن
+  let baseClasses = "inline-flex items-center justify-center font-medium transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none rounded-md "
+
+  // کلاس‌های مربوط به سایز
+  let sizeClasses = ""
+  if (size === 'sm') {
+    sizeClasses = "px-3 py-1.5 text-xs "
+  } else if (size === 'lg') {
+    sizeClasses = "px-6 py-3 text-base "
+  } else {
+    // سایز md به عنوان پیش‌فرض
+    sizeClasses = "px-4 py-2 text-sm "
   }
 
+  // کلاس‌های مربوط به ظاهر (Variant)
+  let variantClasses = ""
+  if (variant === 'default') {
+    variantClasses = "bg-zinc-100 text-black hover:bg-zinc-200 "
+  } else if (variant === 'outline') {
+    variantClasses = "bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 "
+  } else if (variant === 'ghost') {
+    variantClasses = "bg-transparent text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900/50 "
+  }
+
+  // ترکیب کردن همه کلاس‌ها
+  const finalClassName = baseClasses + sizeClasses + variantClasses + className
+
   return (
-    <button
-      // استفاده از کلاس‌های Tailwind به جای motion برای رفع مشکل Drag
-      className={clsx(baseStyles, variants[variant], sizes[size], className)}
-      {...props}
-    >
+    <button className={finalClassName} {...restProps}>
       {children}
     </button>
   )
