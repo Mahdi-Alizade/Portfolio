@@ -9,6 +9,7 @@ export interface ProjectItem {
   metrics?: string
   githubUrl?: string
   liveUrl?: string
+  isPrivate?: boolean
 }
 
 export const site = {
@@ -30,7 +31,7 @@ export const projectsList: ProjectItem[] = [
     description: 'An orchestration system connecting multi-channel customer communications across WhatsApp, Telegram, and Instagram directly into automated Google Calendar scheduling pipelines.',
     stack: ['NestJS', 'Next.js', 'PostgreSQL', 'Redis', 'BullMQ'],
     metrics: 'Automates scheduling flows across 3 messaging protocols',
-    githubUrl: 'https://github.com/Mahdi-Alizade',
+    isPrivate: true,
   },
   {
     id: 'dbdb',
@@ -41,7 +42,7 @@ export const projectsList: ProjectItem[] = [
     description: 'An embedded key-value storage engine implemented with append-only logs, background compaction, consistent hashing proxies for horizontal sharding, and LRU read caching.',
     stack: ['Python', 'AsyncIO', 'Docker', 'Network Protocols'],
     metrics: 'Sub-millisecond retrieval on local caches with append logs',
-    githubUrl: 'https://github.com/Mahdi-Alizade',
+    githubUrl: 'https://github.com/Mahdi-Alizade/dbdb',
   },
   {
     id: 'slowtorch',
@@ -52,7 +53,7 @@ export const projectsList: ProjectItem[] = [
     description: 'A deep learning engine built from mathematical primitives featuring a reverse-mode automatic differentiation graph, manual backpropagation, Adam optimizers, and tensor layers.',
     stack: ['Python', 'Linear Algebra', 'Autograd', 'Calculus'],
     metrics: 'Fully functional tensor computation without external ML runtimes',
-    githubUrl: 'https://github.com/Mahdi-Alizade',
+    githubUrl: 'https://github.com/Mahdi-Alizade/slowtorch',
   },
   {
     id: 'mini-redis',
@@ -63,7 +64,7 @@ export const projectsList: ProjectItem[] = [
     description: 'In-memory key-value data structure store supporting full RESP (Redis Serialization Protocol) socket parsing, TTL key expirations, and set/list collections.',
     stack: ['Python', 'Sockets', 'RESP Protocol', 'Concurrency'],
     metrics: 'Compliant with official Redis CLI clients',
-    githubUrl: 'https://github.com/Mahdi-Alizade',
+    githubUrl: 'https://github.com/Mahdi-Alizade/mini-redis',
   },
   {
     id: 'pyvm',
@@ -74,10 +75,10 @@ export const projectsList: ProjectItem[] = [
     description: 'Custom bytecode virtual machine implementing an instruction evaluator, stack frame management, conditional branching, function definitions, and deep recursion frames.',
     stack: ['Python', 'Bytecode', 'Virtual Machines', 'Compilers'],
     metrics: 'Directly executes compiled function stacks and loops',
-    githubUrl: 'https://github.com/Mahdi-Alizade',
+    githubUrl: 'https://github.com/Mahdi-Alizade/pyvm',
   },
   {
-    id: 'task-orchestrator',
+    id: 'job-orchestrator',
     title: 'Container Task Orchestrator',
     category: 'Architecture',
     status: 'Completed',
@@ -85,6 +86,6 @@ export const projectsList: ProjectItem[] = [
     description: 'Distributed microservice architecture coordinating isolated container jobs via BullMQ worker queues, tracking Docker container execution lifecycles and resource consumption.',
     stack: ['NestJS', 'BullMQ', 'Dockerode', 'Redis'],
     metrics: 'Sandboxed code execution with automated container teardown',
-    githubUrl: 'https://github.com/Mahdi-Alizade',
+    githubUrl: 'https://github.com/Mahdi-Alizade/job-orchestrator',
   },
 ]
