@@ -1,14 +1,12 @@
-"use client";
+"use client"
 
-import { ArrowRight, Globe } from 'lucide-react'
-import { Button } from '../ui/Button'
+import React from 'react'
+import { Terminal, ArrowUpRight, ShieldCheck, Database, Cpu } from 'lucide-react'
+import { site } from '../../lib/site'
 
-function GitHubIcon({ size = 20, className = '' }: { size?: number; className?: string }) {
+function GitHubSvg({ className = 'w-4 h-4' }: { className?: string }) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -23,12 +21,9 @@ function GitHubIcon({ size = 20, className = '' }: { size?: number; className?: 
   )
 }
 
-function LinkedInIcon({ size = 20, className = '' }: { size?: number; className?: string }) {
+function LinkedInSvg({ className = 'w-4 h-4' }: { className?: string }) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -45,103 +40,125 @@ function LinkedInIcon({ size = 20, className = '' }: { size?: number; className?
 }
 
 export function Hero() {
+  function handleScrollToProjects() {
+    const sectionElement = document.getElementById('projects')
+    if (sectionElement) {
+      sectionElement.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
-    <section className="min-h-[calc(100vh-4rem)] flex items-center pt-24 pb-10 relative overflow-hidden">
-      <div className="absolute top-10 right-0 w-[300px] h-[300px] bg-emerald-600/20 rounded-full blur-[100px] pointer-events-none opacity-40 mix-blend-screen hidden sm:block" />
+    <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 border-b border-zinc-900 bg-black overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          
+          {/* Left Column: Core Positioning */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-zinc-900/90 border border-zinc-800 text-xs font-mono text-zinc-300">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>SYSTEMS &amp; DISTRIBUTED ARCHITECTURE</span>
+            </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
-        <div className="space-y-6 z-10 order-1">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/30 border border-emerald-500/20 text-emerald-400 text-[10px] font-medium uppercase tracking-wide">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            Available for global projects
-          </div>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-100 leading-[1.15]">
+              Engineering low-level core engines &amp; reliable production backends.
+            </h1>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-white">
-            I build AI solutions <br className="hidden sm:block" />
-            that solve{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
-              real problems.
-            </span>
-          </h1>
+            <p className="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-xl">
+              I&apos;m <span className="text-zinc-100 font-medium">{site.name}</span>. I design
+              virtual machines, database storage engines, and containerized cloud services.
+              From scratch algorithms to resilient production applications like Nova AI.
+            </p>
 
-          <p className="text-base sm:text-lg text-slate-400 max-w-lg leading-relaxed">
-            Hi, I&apos;m <strong className="text-white">Mahdi Alizade</strong>. I architect
-            intelligent systems for the modern world. Currently building{' '}
-            <strong>Nova AI</strong> for beauty clinics.
-          </p>
-
-          <div className="flex flex-wrap gap-3 pt-2">
-            <Button
-              size="md"
-              onClick={() =>
-                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
-              }
-            >
-              See My Work <ArrowRight size={18} className="ml-2" />
-            </Button>
-
-            <a href="https://github.com/Mahdi-Alizade" target="_blank" rel="noreferrer">
-              <Button
-                variant="outline"
-                size="md"
-                className="gap-2 cursor-pointer w-full sm:w-auto justify-center"
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <button
+                type="button"
+                onClick={handleScrollToProjects}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded bg-zinc-100 text-black text-xs sm:text-sm font-medium hover:bg-zinc-200 transition-colors"
               >
-                <GitHubIcon size={18} /> View GitHub
-              </Button>
-            </a>
-          </div>
+                <span>Inspect Work</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </button>
 
-          <div className="pt-6 border-t border-white/10 flex gap-5 items-center text-slate-500 text-sm">
-            <Globe size={16} className="hover:text-emerald-400 cursor-pointer transition-colors" />
-            <a
-              href="https://github.com/Mahdi-Alizade"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              <GitHubIcon size={16} />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-blue-400 transition-colors"
-            >
-              <LinkedInIcon size={16} />
-            </a>
-            <span className="text-xs ml-2 opacity-60">English • Persian</span>
-          </div>
-        </div>
+              <a
+                href={site.github}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded bg-zinc-900 text-zinc-300 border border-zinc-800 text-xs sm:text-sm hover:border-zinc-700 hover:text-white transition-colors"
+              >
+                <GitHubSvg className="w-4 h-4" />
+                <span>GitHub Repositories</span>
+              </a>
 
-        {/* Product shot — fixed height so it never collapses */}
-        <div className="order-2 relative w-full">
-          <div className="absolute -inset-2 sm:-inset-3 bg-emerald-500/15 rounded-2xl blur-2xl pointer-events-none" />
-          <div className="relative rounded-xl sm:rounded-2xl border border-white/10 bg-zinc-950 overflow-hidden shadow-2xl shadow-black/50">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/nova-demo.png"
-              alt="Nova AI dashboard for beauty clinics"
-              width={1200}
-              height={750}
-              className="w-full h-auto min-h-[220px] sm:min-h-[320px] object-cover object-top block"
-              onError={(e) => {
-                const el = e.currentTarget
-                el.style.display = 'none'
-                const fallback = el.nextElementSibling as HTMLElement | null
-                if (fallback) fallback.style.display = 'flex'
-              }}
-            />
-            <div
-              className="hidden min-h-[220px] sm:min-h-[320px] items-center justify-center p-6 text-center text-slate-400 text-sm"
-              style={{ display: 'none' }}
-            >
-              Image missing: put <code className="text-emerald-400">nova-demo.png</code> in{' '}
-              <code className="text-emerald-400">/public</code>
+              <a
+                href={site.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-3 py-2.5 rounded bg-zinc-900/40 text-zinc-400 border border-zinc-850 hover:text-zinc-200 hover:border-zinc-700 transition-colors"
+                aria-label="LinkedIn Profile"
+              >
+                <LinkedInSvg className="w-4 h-4" />
+              </a>
+            </div>
+
+            <div className="pt-4 flex items-center gap-6 text-xs font-mono text-zinc-500">
+              <div className="flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-zinc-400" />
+                <span>Zero Hallucinated Specs</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Database className="w-3.5 h-3.5 text-zinc-400" />
+                <span>Engineered From Scratch</span>
+              </div>
             </div>
           </div>
+
+          {/* Right Column: Architectural Readout Console */}
+          <div className="lg:col-span-5">
+            <div className="rounded-xl bg-zinc-950 border border-zinc-800 shadow-2xl p-4 font-mono text-xs">
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-zinc-900 text-zinc-500">
+                <div className="flex items-center gap-2">
+                  <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="text-[11px] text-zinc-400">system_runtime_inspector.sh</span>
+                </div>
+                <span className="text-[10px] text-zinc-600">x86_64 / win32</span>
+              </div>
+
+              <div className="space-y-3 text-zinc-300">
+                <div>
+                  <span className="text-zinc-500">$</span> cat core_competencies.json
+                  <div className="pl-3 pt-1 text-zinc-400 space-y-1">
+                    <p><span className="text-emerald-400">&quot;systems&quot;</span>: [&quot;Custom Bytecode VM&quot;, &quot;Append-Only KV Store&quot;],</p>
+                    <p><span className="text-emerald-400">&quot;engine&quot;</span>: [&quot;Autograd Engine&quot;, &quot;RESP Sockets&quot;],</p>
+                    <p><span className="text-emerald-400">&quot;platform&quot;</span>: [&quot;NestJS&quot;, &quot;BullMQ&quot;, &quot;Dockerode Sandboxes&quot;]</p>
+                  </div>
+                </div>
+
+                <div className="pt-1 border-t border-zinc-900">
+                  <div className="flex items-center justify-between text-zinc-500 text-[11px] mb-1.5">
+                    <span>Active Subsystems:</span>
+                    <span className="text-emerald-400">6 running</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 text-[11px]">
+                    <div className="p-2 rounded bg-zinc-900/60 border border-zinc-850 flex items-center gap-2">
+                      <Cpu className="w-3 h-3 text-emerald-400 shrink-0" />
+                      <span className="truncate">PyVM Opcode Exec</span>
+                    </div>
+                    <div className="p-2 rounded bg-zinc-900/60 border border-zinc-850 flex items-center gap-2">
+                      <Database className="w-3 h-3 text-emerald-400 shrink-0" />
+                      <span className="truncate">DBDB Log Storage</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-2 text-zinc-500 text-[11px] flex justify-between">
+                  <span>Status: READY_FOR_DEPLOYMENT</span>
+                  <span className="text-emerald-500 font-bold">100%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
