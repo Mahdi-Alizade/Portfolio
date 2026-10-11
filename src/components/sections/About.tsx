@@ -1,44 +1,98 @@
-import { ArrowDownRight } from 'lucide-react'
+import React from 'react'
+import { Terminal, Shield, Wrench, Code2 } from 'lucide-react'
+import { site } from '../../lib/site'
 
 export function About() {
+  const engineeringPillars = [
+    {
+      title: 'Internals & Low-Level Foundations',
+      description:
+        'Building core components from scratch instead of treating dependencies as black boxes: stack-based bytecode virtual machines, raw RESP parsers, append-only disk storage, and autodiff engines.',
+      icon: Terminal,
+    },
+    {
+      title: 'Distributed Platforms & Isolation',
+      description:
+        'Designing scalable microservice pipelines using BullMQ, Dockerode for isolated container execution, and robust message queuing architectures.',
+      icon: Shield,
+    },
+    {
+      title: 'Production Software Delivery',
+      description:
+        'Shipping production-grade systems like Nova AI: automating complex multi-channel business interactions with strict state control, scheduling integrity, and secure API boundaries.',
+      icon: Wrench,
+    },
+  ]
+
   return (
-    <section id="about" className="py-16 sm:py-24 bg-black">
+    <section id="about" className="py-20 border-t border-zinc-900 bg-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Image Side */}
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-            <img 
-              src="https://images.unsplash.com/photo-1507238691140-d48db37506ef?q=80&w=800&auto=format&fit=crop" 
-              alt="Mahdi Alizade" 
-              className="relative w-full h-[300px] sm:h-[400px] object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-500 border border-white/10"
-            />
+          {/* Left Column: Architectural Thesis */}
+          <div className="lg:col-span-5 space-y-5">
+            <div className="inline-flex items-center gap-2 text-xs font-mono text-emerald-400">
+              <Code2 className="w-3.5 h-3.5" />
+              <span>PHILOSOPHY &amp; APPROACH</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-bold text-zinc-100 tracking-tight leading-snug">
+              Understanding systems from the memory and runtime layer up.
+            </h2>
+
+            <div className="space-y-4 text-sm text-zinc-400 leading-relaxed">
+              <p>
+                My focus as a software engineer revolves around digging into the fundamental
+                mechanics of computation. Rather than simply wiring together external SaaS APIs,
+                I deliberately explore how runtimes evaluate bytecode, how databases persist logs to disk,
+                and how distributed queues coordinate work across containers.
+              </p>
+              <p>
+                This low-level curiosity directly informs how I build high-level applications.
+                Whether developing an embedded key-value store like <span className="text-zinc-200">DBDB</span>,
+                rebuilding PyTorch autodiff in <span className="text-zinc-200">SlowTorch</span>,
+                or orchestrating clinic scheduling pipelines in <span className="text-zinc-200">Nova AI</span>,
+                the goal remains unchanged: deterministic behavior, predictable memory, and zero bloat.
+              </p>
+            </div>
+
+            <div className="pt-2">
+              <div className="p-4 rounded-xl bg-zinc-950 border border-zinc-850 font-mono text-xs text-zinc-400 space-y-1.5">
+                <div className="text-zinc-500">// Engineering Principle</div>
+                <div className="text-zinc-200">
+                  &quot;If you don&apos;t know how the abstraction works beneath you, you don&apos;t own the reliability of your system.&quot;
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Content Side */}
-          <div className="space-y-5">
-            <div className="inline-block px-3 py-1 rounded-full border border-slate-700 text-[10px] font-medium text-slate-400 mb-2">
-              About Me
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-              Architecting the Future of <span className="text-emerald-500">Beauty AI.</span>
-            </h2>
-            <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
-              I'm <strong className="text-white">Mahdi Alizade</strong>, a developer passionate about merging technology with human-centric solutions.
-            </p>
-            <p className="text-slate-400 leading-relaxed">
-              My focus is on building scalable SaaS products that solve real problems. Currently, I am the lead architect behind <strong>Nova AI</strong>, an intelligent appointment panel designed specifically for beauty clinics, aiming to bridge the gap between customer convenience and business efficiency.
-            </p>
-            
-            <div className="flex flex-wrap gap-3 pt-4">
-               {['Next.js', 'TypeScript', 'NestJS', 'React'].map((tech) => (
-                 <span key={tech} className="px-3 py-1 bg-slate-900/50 rounded text-xs text-emerald-400 border border-slate-800">
-                   {tech}
-                 </span>
-               ))}
-            </div>
+          {/* Right Column: Pillars Grid */}
+          <div className="lg:col-span-7 space-y-4">
+            {engineeringPillars.map(function (pillar) {
+              const IconComponent = pillar.icon
+              return (
+                <div
+                  key={pillar.title}
+                  className="p-6 rounded-xl bg-zinc-950 border border-zinc-800/80 hover:border-zinc-700 transition-colors"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-2.5 rounded bg-zinc-900 border border-zinc-800 text-emerald-400 shrink-0 mt-1">
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-zinc-100 mb-2">
+                        {pillar.title}
+                      </h3>
+                      <p className="text-sm text-zinc-400 leading-relaxed">
+                        {pillar.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
           </div>
+
         </div>
       </div>
     </section>
