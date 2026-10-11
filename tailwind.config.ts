@@ -1,24 +1,25 @@
 import type { Config } from 'tailwindcss'
 
-const config: Config = {
+let config: Config = {
   content: [
-    // Scanning all relevant directories for Tailwind classes
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  // Enforcing class-based dark mode management
   darkMode: 'class',
-  
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        background: '#050505',
+        foreground: '#fafafa',
+        electric: {
+          400: '#22d3ee',
+          500: '#06b6d4',
+          600: '#0891b2',
+        }
       },
     },
   },
-  
   plugins: [],
 }
 
