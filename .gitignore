@@ -1,13 +1,46 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
 
-/node_modules/
-/.next/
-/.out/
-/.*.log
-/.env
-/.DS_Store
-/.idea/
-/.vscode/
-/.env.local
-/.env.local
-/.env*.local
-/.log
+# Testing
+/coverage
+
+# Next.js build outputs
+.next/
+out/
+build/
+dist/
+
+# Production & Cache
+*.tsbuildinfo
+next-env.d.ts
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local environment & API secrets (Strict security)
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel & Cloud configs
+.vercel
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
