@@ -39,11 +39,12 @@ function LinkedInSvg({ className = 'w-5 h-5' }: { className?: string }) {
 
 export function Contact() {
   let mailAddress = site.email
+  
   if (!mailAddress) {
     mailAddress = 'contact@example.com'
   }
+  
   let mailtoLink = "mailto:" + mailAddress
-
   let currentYear = new Date().getFullYear()
 
   return (
@@ -82,6 +83,7 @@ export function Contact() {
             </div>
 
             <div className="lg:col-span-5 flex flex-col gap-4">
+              
               <a
                 href={mailtoLink}
                 className="group flex items-center justify-between p-5 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-zinc-700 transition-colors"
@@ -113,7 +115,7 @@ export function Contact() {
                   <div>
                     <div className="text-sm text-zinc-500 font-mono mb-0.5">Code Repository</div>
                     <div className="text-base font-medium text-zinc-200 group-hover:text-white transition-colors">
-                      github.com/Mahdi-Alizade
+                      GitHub Profile
                     </div>
                   </div>
                 </div>
@@ -139,6 +141,7 @@ export function Contact() {
                 </div>
                 <ArrowUpRight className="w-5 h-5 text-zinc-500 group-hover:text-zinc-200 transition-colors" />
               </a>
+
             </div>
 
           </div>
