@@ -113,7 +113,7 @@ export function Contact() {
                     <GitHubSvg className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-sm text-zinc-500 font-mono mb-0.5">Code Repository</div>
+                    <div className="text-sm text-zinc-500 font-mono mb-0.5">Code Repositories</div>
                     <div className="text-base font-medium text-zinc-200 group-hover:text-white transition-colors">
                       GitHub Profile
                     </div>
