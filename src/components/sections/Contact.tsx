@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useState } from 'react'
-import { Mail, ArrowUpRight, Radio, Shield, Terminal, Check } from 'lucide-react'
+import React from 'react'
+import { Mail, ArrowUpRight, Radio, Shield, Terminal } from 'lucide-react'
 import { site } from '../../lib/site'
 
 function GitHubSvg(props: { className?: string }) {
@@ -42,25 +42,12 @@ function LinkedInSvg(props: { className?: string }) {
 }
 
 export function Contact() {
-  const [isCopied, setIsCopied] = useState<boolean>(false)
-
   let mailAddress = site.email
   if (!mailAddress) {
     mailAddress = 'contact@example.com'
   }
-
-  function handleCopyEmail(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault()
-
-    navigator.clipboard.writeText(mailAddress).then(function () {
-      setIsCopied(true)
-
-      setTimeout(function () {
-        setIsCopied(false)
-      }, 2000)
-    })
-  }
-
+  
+  let mailtoLink = "mailto:" + mailAddress
   let currentYear = new Date().getFullYear()
 
   return (
@@ -100,35 +87,26 @@ export function Contact() {
 
             <div className="lg:col-span-5 flex flex-col gap-4">
               
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="group flex items-center justify-between w-full text-left p-5 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-zinc-700 transition-colors cursor-pointer"
+              {/* Email - Text is selectable, clicking the card opens mailto */}
+              <a
+                href={mailtoLink}
+                className="group flex items-center justify-between p-5 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-zinc-700 transition-colors"
               >
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded bg-zinc-850">
-                    {isCopied ? (
-                      <Check className="w-5 h-5 text-emerald-400" />
-                    ) : (
-                      <Mail className="w-5 h-5 text-electric-400" />
-                    )}
+                  <div className="p-3 rounded bg-zinc-850 text-electric-400">
+                    <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-sm text-zinc-500 font-mono mb-0.5">
-                      {isCopied ? 'Status' : 'Electronic Mail'}
-                    </div>
-                    <div className={`text-base font-medium transition-colors ${isCopied ? 'text-emerald-400' : 'text-zinc-200 group-hover:text-white'}`}>
-                      {isCopied ? 'Copied to clipboard!' : mailAddress}
+                    <div className="text-sm text-zinc-500 font-mono mb-0.5">Electronic Mail</div>
+                    <div className="text-base font-medium text-zinc-200 group-hover:text-white transition-colors">
+                      {mailAddress}
                     </div>
                   </div>
                 </div>
-                {isCopied ? (
-                  <Check className="w-5 h-5 text-emerald-400 transition-colors" />
-                ) : (
-                  <ArrowUpRight className="w-5 h-5 text-zinc-500 group-hover:text-zinc-200 transition-colors" />
-                )}
-              </button>
+                <ArrowUpRight className="w-5 h-5 text-zinc-500 group-hover:text-zinc-200 transition-colors" />
+              </a>
 
+              {/* GitHub - URL hidden, consistent with LinkedIn */}
               <a
                 href={site.github}
                 target="_blank"
@@ -142,7 +120,7 @@ export function Contact() {
                   <div>
                     <div className="text-sm text-zinc-500 font-mono mb-0.5">Code Repositories</div>
                     <div className="text-base font-medium text-zinc-200 group-hover:text-white transition-colors">
-                      github.com/Mahdi-Alizade
+                      GitHub Profile
                     </div>
                   </div>
                 </div>
