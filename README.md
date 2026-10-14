@@ -1,36 +1,61 @@
-# Mahdi Alizade — AI Developer & Builder
+# Mahdi Alizade | Systems & Full-Stack Portfolio
 
-Architecting intelligent systems that solve real-world problems. Currently focused on building SaaS products for the beauty industry.
+This repository contains the source code for my personal portfolio and engineering showcase. It is designed to reflect a strict, low-level engineering philosophy, stripping away generic marketing fluff in favor of architectural clarity.
 
----
+## Architecture & Tech Stack
 
-## 🌟 Featured Project: Nova AI
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS (Strict dark theme, Glassmorphism UI)
+- **Icons:** Lucide React
+- **Deployment:** Vercel
 
-**[Nova AI](https://github.com/Mahdi-Alizade/Nova-AI)** — AI Operating System for Beauty Clinics.  
-A comprehensive platform that automates appointment scheduling, handles customer inquiries via NLP, and streamlines clinic operations.
+The UI is intentionally built with a monolithic dark theme (`#050505` background) and electric cyan accents to mimic terminal and system-level environments.
 
-- **Problem:** High no-show rates, missed calls, and chaotic manual scheduling.
-- **Solution:** Intelligent dashboard + AI agents that book paid appointments automatically.
-- **Stack:** NestJS (Backend), Next.js (Web Panel), PostgreSQL, WhatsApp Business API.
+## Project Structure
 
----
+- `src/app/`: Next.js App Router endpoints and global layouts.
+- `src/components/navigation/`: Glassmorphic sticky header and responsive drawers.
+- `src/components/sections/`: Core portfolio modules (Hero, About, Projects, Contact).
+- `src/components/ui/`: Reusable, constrained UI primitives (e.g., Button).
+- `src/lib/site.ts`: Centralized static data store for projects and personal configuration.
 
-## 🛠️ Technology Stack
+## Environment Variables
 
-| Category     | Technologies                                                                 |
-| ------------ | ---------------------------------------------------------------------------- |
-| **Frontend** | Next.js 15 (App Router), TypeScript, TailwindCSS v3, Framer Motion           |
-| **Backend**  | NestJS, Prisma ORM, PostgreSQL                                               |
-| **Tools**    | Git, Docker, Vercel Deployment, REST APIs                                    |
+Create a `.env.local` file in the root directory. **Do not commit this file.**
 
----
+```env
+# Contact Email for the direct dispatch component
+NEXT_PUBLIC_CONTACT_EMAIL="your.email@example.com"
 
-## 🚀 Getting Started (Local Development)
+# Public professional profiles
+NEXT_PUBLIC_LINKEDIN_URL="[https://linkedin.com/in/](https://linkedin.com/in/)..."
+NEXT_PUBLIC_GITHUB_URL="[https://github.com/](https://github.com/)..."
+Note: In production (Vercel), ensure these are added to the environment variables dashboard as Config (non-secret), except for any actual secret keys which must remain Secret.
 
-To run this portfolio locally:
+Local Development
+Install dependencies:
 
-```bash
-git clone https://github.com/Mahdi-Alizade/Portfolio.git
-cd Portfolio
+Bash
 npm install
+Run the development server:
+
+Bash
 npm run dev
+Open http://localhost:3000 in your browser.
+
+Featured Engineering Work
+This portfolio highlights specific system-level implementations:
+
+Nova AI: Production MVP for automated clinic operations. (Private)
+
+DBDB: Append-only key-value storage engine.
+
+SlowTorch: Pure mathematical deep learning and autograd engine.
+
+PyVM: Stack-based custom bytecode virtual machine.
+
+Container Orchestrator: BullMQ & Dockerode isolated execution pipeline.
+
+License
+Copyright © Mahdi Alizade. All rights reserved.
